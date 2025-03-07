@@ -178,7 +178,18 @@ def update_graph(selected_ticker, custom_ticker, period):
             ),
             row=1, col=1
         )
-
+        # Set RSI y-axis range from 0 to 100
+        fig.update_yaxes(range=[0, 100], row=2, col=1)
+        # Add border frame to RSI subplot
+        fig.update_xaxes(showline=True, linewidth=5, linecolor='#2c3e50', row=2, col=1)
+        fig.update_yaxes(showline=True, linewidth=5, linecolor='#2c3e50', row=2, col=1)
+        fig.update_layout(
+            xaxis_showgrid=True,
+            yaxis_showgrid=True,
+            xaxis_zeroline=False,
+            yaxis_zeroline=False,
+            plot_bgcolor='grey'
+        )
         # Add RSI
         fig.add_trace(
             go.Scatter(
@@ -226,4 +237,4 @@ def update_graph(selected_ticker, custom_ticker, period):
         return {}, f"Error fetching data for {ticker_symbol}. Please check the ticker symbol."
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=12354, debug=True) 
+    app.run(host='127.0.0.1', port=12355, debug=True) 
